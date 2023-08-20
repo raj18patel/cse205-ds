@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>>ans;
+        vector<int>vect;
+        subset(0,nums,vect,ans);
+        return ans;
+
+    }
+    void subset(int v,vector<int>& nums,vector<int>&vect,vector<vector<int>>&ans) {
+        ans.push_back(vect);
+        for(int i=v; i<nums.size(); i++){
+            vect.push_back(nums[i]);
+            subset(i+1,nums,vect,ans);
+            vect.pop_back();
+        }
+    }
+
+};
