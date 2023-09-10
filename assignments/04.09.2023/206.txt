@@ -1,0 +1,22 @@
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* curt = head;
+        ListNode* pre = NULL;
+        ListNode* fw =new ListNode();
+        if(curt == NULL || curt->next ==NULL){
+            return curt;
+        }
+
+        while(curt!=NULL){
+            fw =curt->next;
+            curt->next =pre;
+            
+            pre =curt;
+            curt =fw;
+
+
+        }
+        return pre;
+    }
+};
