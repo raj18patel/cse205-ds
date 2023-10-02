@@ -1,0 +1,45 @@
+class MyStack {
+private:
+    queue<int>r, v;
+public:
+    MyStack() {
+        
+    }
+    void push(int x) {
+       r.push(x);
+    }
+    
+    int pop() {
+        while(r.size() != 1){
+            v.push(r.front());
+           r.pop();
+        }
+        int res =r.front();
+       r.pop();
+        while(!v.empty()){
+           r.push(v.front());
+            v.pop();
+        }
+        return res;
+    }
+
+
+    int top() {
+        while(r.size() != 1){
+            v.push(r.front());
+           r.pop();
+        }
+        int res =r.front();
+       r.pop();
+        v.push(res);
+        while(!v.empty()){
+           r.push(v.front());
+            v.pop();
+        }
+        return res;
+    }
+    
+    bool empty() {
+        return r.empty();
+    }
+};
