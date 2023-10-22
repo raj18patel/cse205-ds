@@ -1,0 +1,26 @@
+class Solution {
+public:
+  
+    vector<int> findErrorNums(vector<int>& nums) {
+       unordered_set<int>v;
+       vector<int>ans;
+       for(int i=1;i<=nums.size();i++)
+       v.insert(i);
+        int j=0;
+      
+        for(int i=0;i<nums.size();i++)
+        {
+            if(v.find(nums[i])==v.end())
+            {
+                ans.push_back(nums[i]);
+            }
+            else
+            {
+                v.erase(v.find(nums[i]));
+            }
+        }
+        ans.push_back(*v.begin());
+        return ans;
+        
+    }
+};
