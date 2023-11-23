@@ -1,0 +1,36 @@
+class Solution {
+public:
+
+   void fn(TreeNode* root,vector<int>&ans)
+   {
+      if(root==NULL)
+      return;
+      fn(root->left,ans);
+      ans.push_back(root->val);
+      fn(root->right,ans);
+
+   }
+   int i=0;
+   void check(TreeNode* root,vector<int>&ans)
+   {
+       if(root==NULL)
+       {
+           return;
+       }
+       check(root->left,ans);            
+       if(root->val!=ans[i])
+       {
+           swap(root->val,ans[i]); 
+       }
+       i++;
+       check(root->right,ans);
+   }
+    void recoverTree(TreeNode* root) {
+        vector<int>ans;
+        fn(root,ans);
+        sort(ans.begin(),ans.end());
+        check(root,ans);
+        
+        
+    }
+};
